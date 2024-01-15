@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 </head>
 <body>
 
@@ -11,15 +14,14 @@
         react-goes-here
     </div>
 
-    <script type="text/babel">
-        console.log(React);
-        function MyComponent() {
-            return (<div>Hello OpenClassrooms 👋</div>)
-        }
-        
-        ReactDOM.render("<div>Hello OpenClassrooms 👋</div>", document.getElementById("react-goes-here"))
+    
+    <script>
+        // console.log(React);
+        // console.log(ReactDOM);
     </script>
-    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+
+    <script type="text/babel">
+        ReactDOM.render(<div>Hello OpenClassrooms 👋</div>, document.getElementById("react-goes-here"))
+    </script>
 </body>
 </html>
