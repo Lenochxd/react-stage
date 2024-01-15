@@ -1,0 +1,14 @@
+15/01:
+    J'ai commencé par relire le cours pour JavaScript pour le web acr j'ai quelques difficultés en javascript comme je débute.
+    J'ai ensuite pu commencer le cours sur React
+
+    Notes React (pas important):
+        premier problème: les scripts avec un type de `text/babel` ne s'exécutent pas, et react ne peut pas fonctionner sur des `text/javascript`
+            - donc: je cherche et je trouve ça https://stackoverflow.com/a/74327799/17100464 du coup je me dis qu'il fallait juste avoir un serveur,
+            du coup j'ai fait un serveur flask mais ça ne change évidemment rien (je sais même pas pourquoi j'ai essayé)
+            - solution suivante que j'avais pas vu: https://stackoverflow.com/a/66793723/17100464
+            Oui il fallait juste importer babel mais rien ne disait ça sur openclassrooms...
+            Pourtant à un moment le code babel fonctionnait même sans avoir à l'importer (??)
+            Bref au final le problème est réglé et je supprime malheureusement le serveur flask fait inutilement.
+            
+        16h54: j'en suis à 21%, après le premier quizz.
