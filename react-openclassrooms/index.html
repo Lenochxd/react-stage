@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
@@ -13,6 +14,7 @@
     <div id="react-goes-here">
         react-goes-here
     </div>
+    <div id="root"></div>
 
     
     <script>
@@ -22,6 +24,28 @@
 
     <script type="text/babel">
         ReactDOM.render(<div>Hello OpenClassrooms 👋</div>, document.getElementById("react-goes-here"))
+
+        function Header() {
+            return (<div>
+                <h1>La maison jungle</h1>
+            </div>)
+        }
+        // function Description() {
+        //     return (<p>Ici achetez toutes les plantes dont vous avez toujours rêvé 🌵🌱🎍</p>)
+        // }
+        function Description() {
+            const text = "Ici achetez toutes les plantes dont vous avez toujours rêvé"
+            return (<p>{ text }</p>)
+        }
+        function Banner() {
+            return (<div>
+                <Header />
+                <Description />
+            </div>)
+        }
+
+        ReactDOM.render(<div><Banner /></div>, document.getElementById("root"))
+
     </script>
 </body>
 </html>
