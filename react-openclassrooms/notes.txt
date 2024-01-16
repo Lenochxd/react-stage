@@ -12,3 +12,9 @@
             Bref au final le problème est réglé et je supprime malheureusement le serveur flask fait inutilement.
 
         16h54: j'en suis à 21%, après le premier quizz.
+        
+16/01:
+    - J'ai avancé sur le cours react:
+        j'ai appris à utiliser CreateReactApp (j'aime beaucoup c'est vraiment très pratique) et les commandes yarn
+    - J'ai également aidé hugo sur un problème qu'il avait sur son projet html et avec vscode (il voulait importer une image 'images/image.png' alors que le dossier images n'existais pas, je lui alors expliqué son problème tout en lui faisant comprendre que c'était normal de faire des erreurs au début)
+
