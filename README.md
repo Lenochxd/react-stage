@@ -1,4 +1,4 @@
 do not pay attention to this if you are a random person !
 
 
-# **les notes sont [ici](https://github.com/LeLenoch/react-stage/blob/master/react-openclassrooms/notes.txt)**
+# **Les notes sont [ici](https://github.com/LeLenoch/react-stage/blob/main/react-openclassrooms/notes.txt)**
