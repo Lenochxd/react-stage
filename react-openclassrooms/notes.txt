@@ -18,3 +18,9 @@
         j'ai appris à utiliser CreateReactApp (j'aime beaucoup c'est vraiment très pratique) et les commandes yarn
     - J'ai également aidé hugo sur un problème qu'il avait sur son projet html et avec vscode (il voulait importer une image 'images/image.png' alors que le dossier images n'existais pas, je lui alors expliqué son problème tout en lui faisant comprendre que c'était normal de faire des erreurs au début)
 
+17/01:
+    - J'ai appris à mieux utiliser le css et les styles avec react
+
+18/01:
+    - J'ai appris à remplacer les document.addEventListener() avec react
+    - J'ai appris à utiliser useState
