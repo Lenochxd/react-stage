@@ -24,3 +24,6 @@
 18/01:
     - J'ai appris à remplacer les document.addEventListener() avec react
     - J'ai appris à utiliser useState
+
+19/10:
+    J'ai terminé le dernier chapitre du cours react
