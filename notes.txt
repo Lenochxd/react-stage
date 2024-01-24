@@ -25,5 +25,15 @@
     - J'ai appris à remplacer les document.addEventListener() avec react
     - J'ai appris à utiliser useState
 
-19/10:
+19/01:
     J'ai terminé le dernier chapitre du cours react
+
+22/01:
+    Exercices css sur https://cssgridgarden.com/ et https://flukeout.github.io/
+23/01:
+    "réaliser un projet sur le sujet de votre choix qui devra refléter ce que vous avez appris. Si vous avez fini avant 17h, libre à vous de pousser plus loin."
+    J'ai choisi de reproduir le jeu du démineur avec react, j'ai réussi à faire un générateur de grille de jeu, mais je suis resté
+    bloqué un moment sur différents problèmes: je n'arrivais pas à cacher les cases avec closed.svg pour qu'on puisse les ouvrir ensuite
+    commit: https://github.com/Lenochxd/react-stage/commit/71f8054d84b186ee2a1186f69c9a1718b1b5c59d
+24/01:
+    je continue le projet, avec un peu de chance je deviendrais bientôt à l'aise avec React et je pourrais terminer le projet à 100% de mon côté
