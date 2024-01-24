@@ -1,0 +1,62 @@
+html, body {
+  -moz-user-select: none; /* Empêcher la sélection de texte sur Firefox */
+  -webkit-user-select: none; /* Empêcher la sélection de texte sur Chrome et Safari */
+  -ms-user-select: none; /* Empêcher la sélection de texte sur IE */
+  user-select: none; /* Empêcher la sélection de texte sur les navigateurs modernes */
+  background-color: #fefefe;
+  color: black;
+}
+.brand-text {
+  font-family: Merriweather,'Open Sans',sans-serif;
+  font-size: 30px;
+  margin: 0 0 0 8px;
+  text-shadow: 1px 1px 0 #fff;
+  color: #606060;
+  text-align: center;
+  height: 40px;
+  /* background-color: black; */
+  padding-bottom: 50px;
+}
+.brand-text::after {
+  content: "";
+  height: 2px;
+  width: max-content;
+  background-color: #606060;
+}
+
+.App {
+  text-align: center;
+}
+
+.game {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.board {
+  display: inline-block;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.cell:hover {
+  background-color: #eee;
+}
+
+.game-over {
+  margin-top: 20px;
+  font-size: 24px;
+  color: red;
+}

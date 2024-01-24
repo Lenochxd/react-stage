@@ -1,0 +1,26 @@
+.typemine { content: url('../assets/mine.svg'); }
+.type0 { content: url('../assets/type0.svg'); }
+.type1 { content: url('../assets/type1.svg'); }
+.type2 { content: url('../assets/type2.svg'); }
+.type3 { content: url('../assets/type3.svg'); }
+.type4 { content: url('../assets/type4.svg'); }
+.type5 { content: url('../assets/type5.svg'); }
+.type6 { content: url('../assets/type6.svg'); }
+.type7 { content: url('../assets/type7.svg'); }
+.type8 { content: url('../assets/type8.svg'); }
+
+.cell {
+    position: relative;
+}
+
+.closed {
+    content: url('../assets/closed.svg');
+    position: absolute;
+    /* pointer-events: none; */
+    width: 30px;
+    z-index: 1;
+}
+
+.under {
+    display: none;
+}
