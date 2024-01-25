@@ -37,3 +37,12 @@
     commit: https://github.com/Lenochxd/react-stage/commit/71f8054d84b186ee2a1186f69c9a1718b1b5c59d
 24/01:
     je continue le projet, avec un peu de chance je deviendrais bientôt à l'aise avec React et je pourrais terminer le projet à 100% de mon côté
+        - J'ai réussi a rendre les cases cliquables pour laisser aparaître le dessous
+        - j'ai pu également faire en sorte que les cases "0" ouvraient automatiquement les autres 0 adjacents
+25/01:
+    - J'ai mis en place le système de clic droit pour marquer une mine avec le drapeau,
+    - Comme pour https://minesweeper.online, j'ai fait un système pour pouvoir ouvrir plusieurs cases en même temps en cliquant sur un chiffre
+      en fait, par exemple si un 2 est cliqué et que 2 mines sont déjà marquées autour de celle-ci, les autres cases non découvertes s'ouvrieront
+    - J'ai également fait un système similaire pour placer des drapeaux partout autour d'une case plus rapidement, ce qui n'existe pas sur minesweeper.online
+    - J'ai commencé à régler un bug qui faisait planter l'application si on essayait de marquer des trapaux autour d'une case au bord,
+      ce qui ne fonctionnait pas tout simplement car il est impossible de placer un flag dans le vide.
