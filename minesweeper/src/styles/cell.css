@@ -8,4 +8,5 @@
 .type6 { content: url('../assets/type6.svg'); }
 .type7 { content: url('../assets/type7.svg'); }
 .type8 { content: url('../assets/type8.svg'); }
-.closed {content: url('../assets/closed.svg');}
+.closed {content: url('../assets/closed.svg'); }
+.flagged {content: url('../assets/flag.svg'); }

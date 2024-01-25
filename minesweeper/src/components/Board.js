@@ -9,10 +9,11 @@ const Board = ({ board, handleCellClick }) => {
                     {row.map((cell, columnIndex) => (
                         <Cell
                             key={columnIndex}
-                            value={cell.toString().replaceAll(' ','').replaceAll('closed','')}
+                            value={cell.toString().replaceAll(' ','').replace('closed','').replace('flagged','')}
                             position={`cell_${rowIndex}_${columnIndex}`}
                             closed={cell.toString().includes('closed') ? 'closed' : ''}
-                            onClick={function() { handleCellClick.call(this, rowIndex, columnIndex); }}
+                            flagged={cell.toString().includes('flagged') ? 'flagged' : ''}
+                            onClick={(event) => { handleCellClick(event, rowIndex, columnIndex); }}
                         />
                     ))}
                 </div>

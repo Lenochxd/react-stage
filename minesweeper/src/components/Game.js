@@ -63,7 +63,7 @@ const Game = () => {
   const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
-    handleNewGameClick();
+    handleNewGameClick(); // TODO: rename
   }, []);
 
   const clearEmptyCells = (board, row, col) => {
@@ -91,13 +91,97 @@ const Game = () => {
     setBoard(newBoard);
   };
 
-  const handleCellClick = (row, col) => {
-    if (board[row][col].startsWith('0')) {
-      clearEmptyCells(board, row, col);
-    } else {
-      // Retirez la classe 'hidden' de la cellule cliquée
-      const newBoard = [...board];
-      newBoard[row][col] = newBoard[row][col].replace('closed', '');
+  const checkAdjacentFlags = (board, row, col) => {
+    let count = 0;
+
+    for (let i = -1; i <= 1; i++) {
+      for (let j = -1; j <= 1; j++) {
+        const newRow = row + i;
+        const newCol = col + j;
+
+        if (
+          newRow >= 0 &&
+          newRow < board.length &&
+          newCol >= 0 &&
+          newCol < board[newRow].length
+        ) {
+          if (board[newRow][newCol].includes('flagged')) {
+            count++;
+          }
+        }
+      }
+    }
+
+    return count;
+  };
+
+  const handleCellClick = (e, row, col) => {
+    const newBoard = [...board];
+    if (e.type === 'click') {
+      if (!board[row][col].includes('flagged')) {
+        if (!board[row][col].includes('closed')) {
+          const adjacentFlags = checkAdjacentFlags(board, row, col)
+          if (adjacentFlags === parseInt(newBoard[row][col].charAt(0))) {
+            for (let i = -1; i <= 1; i++) {
+              for (let j = -1; j <= 1; j++) {
+                clearEmptyCells(newBoard, row + i, col + j)
+              }
+            }
+          }
+        } else {
+          if (board[row][col].startsWith('0')) {
+            clearEmptyCells(board, row, col);
+          } else {
+            newBoard[row][col] = newBoard[row][col].replace('closed', '');
+            setBoard(newBoard);
+          }
+        }
+      }
+    } else if (e.type === 'contextmenu') {
+      e.preventDefault();
+
+      if (newBoard[row][col].includes('flagged')) {
+        newBoard[row][col] = newBoard[row][col].replace('flagged', '')
+      }
+      else if (board[row][col].includes('closed')) {
+        newBoard[row][col] += ' flagged';
+      }
+
+
+      if (!board[row][col].includes('closed')) {
+
+        let everyCellsFlagged = true;
+        for (let i = -1; i <= 1; i++) {
+          for (let j = -1; j <= 1; j++) {
+            if (newBoard[row + i][col + j].includes('closed')) {
+              if (!newBoard[row + i][col + j].includes('flagged')) {
+                everyCellsFlagged = false;
+              }
+            }
+          }
+        }
+        console.log(everyCellsFlagged);
+        if (everyCellsFlagged === true) {
+          for (let i = -1; i <= 1; i++) {
+            for (let j = -1; j <= 1; j++) {
+              newBoard[row + i][col + j] = newBoard[row + i][col + j].replace('flagged', '')
+            }
+          }
+        } else {
+          for (let i = -1; i <= 1; i++) {
+            for (let j = -1; j <= 1; j++) {
+              if (board[row + i][col + j].includes('closed')) {
+                if (!board[row + i][col + j].includes('flagged')) {
+                  newBoard[row + i][col + j] += ' flagged';
+                }
+              }
+            }
+          }
+
+        }
+        
+      }
+
       setBoard(newBoard);
     }
   };
