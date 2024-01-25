@@ -47,6 +47,13 @@ const generateEmptyBoard = (rows, cols, numBombs) => {
     }
   }
 
+  // Ajouter "closed" à la fin de chaque valeur
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      emptyBoard[row][col] += 'closed';
+    }
+  }
+
   return emptyBoard;
 };
 
@@ -59,18 +66,41 @@ const Game = () => {
     handleNewGameClick();
   }, []);
 
-  const handleCellClick = function (row, col) {
-    // Créez une copie du tableau pour éviter la mutation directe de l'état
+  const clearEmptyCells = (board, row, col) => {
+    if (
+      row < 0 ||
+      row >= board.length ||
+      col < 0 ||
+      col >= board[row].length ||
+      !board[row][col].includes('closed')
+    ) {
+      return;
+    }
+  
     const newBoard = [...board];
-    console.log(newBoard[row][col]);
-    console.log(row, col);
-
-    // Retirez la classe 'hidden' de la cellule cliquée
-    newBoard[row][col] = ''; 
-
-    // Mettez à jour l'état du tableau
+    newBoard[row][col] = newBoard[row][col].replace('closed', '');
+  
+    if (newBoard[row][col].startsWith('0')) {
+      for (let i = -1; i <= 1; i++) {
+        for (let j = -1; j <= 1; j++) {
+          clearEmptyCells(newBoard, row + i, col + j);
+        }
+      }
+    }
+  
     setBoard(newBoard);
   };
+
+  const handleCellClick = (row, col) => {
+  if (board[row][col].startsWith('0')) {
+    clearEmptyCells(board, row, col);
+  } else {
+    // Retirez la classe 'hidden' de la cellule cliquée
+    const newBoard = [...board];
+    newBoard[row][col] = newBoard[row][col].replace('closed', '');
+    setBoard(newBoard);
+  }
+};
 
   const handleNewGameClick = () => {
     // Logique pour générer un nouveau jeu

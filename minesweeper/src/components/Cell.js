@@ -11,19 +11,14 @@ const renderSwitch = (value) => {
 };
 
 
-const Cell = ({ value, position, onClick }) => {
+const Cell = ({ value, position, closed, onClick }) => {
     return (
         <div>
             
             <div
-                className={`closed under${value}`}
-                id={`closed-${position}`}
-                onClick={onClick}
-            />
-            
-            <div
-                className={`cell type${value}`}
+                className={`cell type${value} ${closed}`}
                 id={position}
+                onClick={onClick}
             />
         </div>
             
