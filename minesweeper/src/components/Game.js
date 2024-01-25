@@ -76,10 +76,10 @@ const Game = () => {
     ) {
       return;
     }
-  
+
     const newBoard = [...board];
     newBoard[row][col] = newBoard[row][col].replace('closed', '');
-  
+
     if (newBoard[row][col].startsWith('0')) {
       for (let i = -1; i <= 1; i++) {
         for (let j = -1; j <= 1; j++) {
@@ -87,20 +87,20 @@ const Game = () => {
         }
       }
     }
-  
+
     setBoard(newBoard);
   };
 
   const handleCellClick = (row, col) => {
-  if (board[row][col].startsWith('0')) {
-    clearEmptyCells(board, row, col);
-  } else {
-    // Retirez la classe 'hidden' de la cellule cliquée
-    const newBoard = [...board];
-    newBoard[row][col] = newBoard[row][col].replace('closed', '');
-    setBoard(newBoard);
-  }
-};
+    if (board[row][col].startsWith('0')) {
+      clearEmptyCells(board, row, col);
+    } else {
+      // Retirez la classe 'hidden' de la cellule cliquée
+      const newBoard = [...board];
+      newBoard[row][col] = newBoard[row][col].replace('closed', '');
+      setBoard(newBoard);
+    }
+  };
 
   const handleNewGameClick = () => {
     // Logique pour générer un nouveau jeu
