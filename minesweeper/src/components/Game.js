@@ -63,7 +63,7 @@ const Game = () => {
   const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
-    handleNewGameClick(); // TODO: rename
+    handleNewGameClick();
   }, []);
 
   const isDefined = (board, row, col) => {
@@ -78,6 +78,17 @@ const Game = () => {
     board[row][col] = board[row][col].replace('mine', 'gameover');
 
     // game over!
+    console.log('game over!')
+    for (let i = 0; i < board.length; i++) {
+      for (let j = 0; j < board[i].length; j++) {
+        // for every cells in board
+        if (board[i][j].includes('mine')) {
+          board[i][j] = board[i][j].replace('closed','');
+        }
+      }
+    }
+    setBoard(board);
+    setGameOver(true);
     return board;
   };
 
@@ -139,6 +150,9 @@ const Game = () => {
   };
 
   const handleCellClick = (e, row, col) => {
+    if (gameOver === true) {
+      return
+    }
     let newBoard = [...board];
     if (e.type === 'click') {
       if (board[row][col]) {
