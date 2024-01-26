@@ -11,7 +11,8 @@ const renderSwitch = (value) => {
 };
 
 
-const Cell = ({ value, position, closed, flagged, onClick }) => {
+const Cell = ({ value, position, closed, flagged,
+ onClick }) => {
     return (
         <div
             className={`cell type${value} ${closed} ${flagged}`}
