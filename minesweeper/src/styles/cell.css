@@ -1,13 +1,13 @@
-.typemine { content: url('../assets/mine.svg'); }
-.typegameover { content: url('../assets/mine_red.svg'); }
-.type0 { content: url('../assets/type0.svg'); }
-.type1 { content: url('../assets/type1.svg'); }
-.type2 { content: url('../assets/type2.svg'); }
-.type3 { content: url('../assets/type3.svg'); }
-.type4 { content: url('../assets/type4.svg'); }
-.type5 { content: url('../assets/type5.svg'); }
-.type6 { content: url('../assets/type6.svg'); }
-.type7 { content: url('../assets/type7.svg'); }
-.type8 { content: url('../assets/type8.svg'); }
-.closed {content: url('../assets/closed.svg'); }
-.flagged {content: url('../assets/flag.svg'); }
+.typemine { content: url('../assets/cells/mine.svg'); }
+.typegameover { content: url('../assets/cells/mine_red.svg'); }
+.type0 { content: url('../assets/cells/type0.svg'); }
+.type1 { content: url('../assets/cells/type1.svg'); }
+.type2 { content: url('../assets/cells/type2.svg'); }
+.type3 { content: url('../assets/cells/type3.svg'); }
+.type4 { content: url('../assets/cells/type4.svg'); }
+.type5 { content: url('../assets/cells/type5.svg'); }
+.type6 { content: url('../assets/cells/type6.svg'); }
+.type7 { content: url('../assets/cells/type7.svg'); }
+.type8 { content: url('../assets/cells/type8.svg'); }
+.closed {content: url('../assets/cells/closed.svg'); }
+.flagged {content: url('../assets/cells/flag.svg'); }
