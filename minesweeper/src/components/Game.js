@@ -269,8 +269,42 @@ const Game = () => {
 
   return (
     <div className="game">
-      <div onClick={handleNewGameClick} className={`game-status ${hasWon ? 'game-won' : gameOver ? 'game-lost' : 'game-playing'}`}/>
-      <Board board={board} handleCellClick={handleCellClick} />
+      {/* TOP */}
+      <span className="top-area-center top">
+        <div className="corner-up-left" />
+        <div className="border-hor" />
+        <div className="corner-up-right" />
+      </span>
+
+      <span className="top-area-center mid">
+        <div className="border-vert h-20" />
+        <div className="numbers-panel mines-left" />
+        <div onClick={handleNewGameClick} className={`game-status ${hasWon ? 'game-won' : gameOver ? 'game-lost' : 'game-playing'}`} />
+        <div className="numbers-panel timer" />
+        <div className="border-vert h-20" />
+      </span>
+
+      <span className="top-area-center bottom">
+        <div className="t-left" />
+        <div className="border-hor" />
+        <div className="t-right" />
+      </span>
+
+
+      {/* BOARD */}
+      <span className="top-area-center board">
+        <div className="border-vert h-80" />
+        <Board board={board} handleCellClick={handleCellClick} />
+        <div className="border-vert h-80" />
+        {/* il faut 22.5rem pour cette grille! pas h-80, il faudrait que ça soit en pourcentages pour que ça soit automatique
+        mais je n'ai pas encore réussi à le faire.. */}
+      </span>
+
+      <span className="top-area-center board-bottom">
+        <div className="corner-bottom-left" />
+        <div className="border-hor" />
+        <div className="corner-bottom-right" />
+      </span>
     </div>
   );
 };

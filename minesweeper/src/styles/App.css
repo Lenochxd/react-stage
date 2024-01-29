@@ -5,7 +5,10 @@ html, body {
   user-select: none; /* Empêcher la sélection de texte sur les navigateurs modernes */
   background-color: #fefefe;
   color: black;
+  height: 100%;
+  margin: 0;
 }
+
 .brand-text {
   font-family: Merriweather,'Open Sans',sans-serif;
   font-size: 30px;
@@ -26,12 +29,16 @@ html, body {
 
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .game {
   display: flex;
   align-items: center;
   flex-direction: column;
+  max-width: fit-content;
 }
 
 .board {
@@ -49,6 +56,68 @@ html, body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+.top-area-center {
+  background-color: #c6c6c6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: -webkit-fill-available;
+}
+
+.border-hor {
+  height: 27.5px;
+  width: -webkit-fill-available;
+  background-image: url('../assets/UI/border_hor.png');
+  background-size: 100% 100%;
+}
+.border-vert {
+  min-width: 30px;
+  background-image: url('../assets/UI/border_vert.png');
+  background-size: 100% 100%;
+}
+.t-left {
+  min-width: 30px;
+  min-height: 27.5px;
+  background-image: url('../assets/UI/t_left.png');
+  background-size: 100% 100%;
+}
+.t-right {
+  min-width: 30px;
+  min-height: 27.5px;
+  background-image: url('../assets/UI/t_right.png');
+  background-size: 100% 100%;
+}
+.corner-bottom-left {
+  min-width: 30px;
+  height: 27.5px;
+  background-image: url('../assets/UI/corner_bottom_left.png');
+  background-size: 100% 100%;
+}
+.corner-bottom-right {
+  min-width: 30px;
+  height: 27.5px;
+  background-image: url('../assets/UI/corner_bottom_right.png');
+  background-size: 100% 100%;
+}
+.corner-up-left {
+  min-width: 30px;
+  height: 27.5px;
+  background-image: url('../assets/UI/corner_up_left.png');
+  background-size: 100% 100%;
+}
+.corner-up-right {
+  min-width: 30px;
+  height: 27.5px;
+  background-image: url('../assets/UI/corner_up_right.png');
+  background-size: 100% 100%;
+}
+
+.numbers-panel {
+  content: url('../assets/UI/nums_background.svg');
+  width: 102.5px;
+  height: 52.5px;
 }
 
 .game-status {
