@@ -61,6 +61,7 @@ const generateEmptyBoard = (rows, cols, numBombs) => {
 const Game = () => {
   const [board, setBoard] = useState([]);
   const [gameOver, setGameOver] = useState(false);
+  const [hasWon, setHasWon] = useState(false);
 
   useEffect(() => {
     handleNewGameClick();
@@ -83,7 +84,7 @@ const Game = () => {
       for (let j = 0; j < board[i].length; j++) {
         // for every cells in board
         if (board[i][j].includes('mine')) {
-          board[i][j] = board[i][j].replace('closed','');
+          board[i][j] = board[i][j].replace('closed', '');
         }
       }
     }
@@ -105,22 +106,20 @@ const Game = () => {
 
     let newBoard = [...board];
     if (!newBoard[row][col].includes('flagged')) {
-
       newBoard[row][col] = newBoard[row][col].replace('closed', '');
     }
-    
+
     if (newBoard[row][col].startsWith('0')) {
       for (let i = -1; i <= 1; i++) {
         for (let j = -1; j <= 1; j++) {
           if (!newBoard[row][col].includes('flagged')) {
             clearEmptyCells(newBoard, row + i, col + j);
-            if (newBoard[row][col].includes('mine')) {
-              newBoard = explode(newBoard, row, col);
-            }
           }
         }
       }
     }
+
+
 
     setBoard(newBoard);
   };
@@ -187,7 +186,7 @@ const Game = () => {
         }
         else if (board[row][col].includes('closed')) {
           newBoard[row][col] += ' flagged';
-        }        
+        }
       }
 
 
@@ -196,7 +195,7 @@ const Game = () => {
         let everyCellsFlagged = true;
         for (let i = -1; i <= 1; i++) {
           for (let j = -1; j <= 1; j++) {
-            if (isDefined(newBoard, row+i, col+j)) {
+            if (isDefined(newBoard, row + i, col + j)) {
               if (newBoard[row + i][col + j].includes('closed')) {
                 if (!newBoard[row + i][col + j].includes('flagged')) {
                   everyCellsFlagged = false;
@@ -209,7 +208,7 @@ const Game = () => {
         if (everyCellsFlagged === true) {
           for (let i = -1; i <= 1; i++) {
             for (let j = -1; j <= 1; j++) {
-              if (isDefined(newBoard, row+i, col+j)) {
+              if (isDefined(newBoard, row + i, col + j)) {
                 newBoard[row + i][col + j] = newBoard[row + i][col + j].replace('flagged', '')
               }
             }
@@ -217,7 +216,7 @@ const Game = () => {
         } else {
           for (let i = -1; i <= 1; i++) {
             for (let j = -1; j <= 1; j++) {
-              if (isDefined(newBoard, row+i, col+j)) {
+              if (isDefined(newBoard, row + i, col + j)) {
                 if (board[row + i][col + j].includes('closed')) {
                   if (!board[row + i][col + j].includes('flagged')) {
                     newBoard[row + i][col + j] += ' flagged';
@@ -228,26 +227,52 @@ const Game = () => {
           }
 
         }
-        
-      }
 
-      setBoard(newBoard);
+      }
     }
+
+
+    // Check if the player has won the game
+    let allCellsRevealed = true;
+    for (let i = 0; i < board.length; i++) {
+      for (let j = 0; j < board[i].length; j++) {
+        if (!board[i][j].includes('mine')) {
+          if (board[i][j].includes('closed')) {
+            allCellsRevealed = false;
+          }
+        }
+      }
+    }
+    if (allCellsRevealed) {
+      // Flags every missing mines
+      for (let i = 0; i < board.length; i++) {
+        for (let j = 0; j < board[i].length; j++) {
+          if (board[i][j].includes('mine')) {
+            newBoard[i][j] += ' flagged';
+          }
+        }
+      }
+      
+      setHasWon(true);
+    }
+
+    setBoard(newBoard);
   };
 
   const handleNewGameClick = () => {
     // Logique pour générer un nouveau jeu
-    const newBoard = generateEmptyBoard(9, 9, 10);
+    const newBoard = generateEmptyBoard(10, 10, 9);
     setBoard(newBoard);
     setGameOver(false);
+    setHasWon(false);
   };
-
 
   return (
     <div className="game">
       <button onClick={handleNewGameClick}>Nouveau jeu</button>
       <Board board={board} handleCellClick={handleCellClick} />
       {gameOver && <div className="game-over">Game Over!</div>}
+      {hasWon && <div className="game-won">You won!</div>}
     </div>
   );
 };
