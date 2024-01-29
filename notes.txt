@@ -57,4 +57,7 @@
         - le design du site web, je compte m'inspirer (tout copier) de minesweeper.online
 29/01:
     - J'ai ajouté l'écran de victoire, qui mets un drapeau sur toutes les mines oubliées
-    - J'ai commencé l'UI, pour l'instant j'ai terminé les contours du tableau de jeu, avec le compteur de mines restantes et le timer, pas encore fonctionnels. Il y a également un bouton rejouer comme sur windows xp.
+    - J'ai commencé l'UI:
+        - Pour l'instant j'ai terminé les contours du tableau de jeu, avec le compteur de mines restantes et le timer, pas encore fonctionnels.
+        - Il y a également un bouton rejouer comme sur windows xp.
+        - J'ai d'ailleurs commencé à utiliser tailwind pour faire cela.
