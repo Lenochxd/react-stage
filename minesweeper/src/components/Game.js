@@ -252,7 +252,7 @@ const Game = () => {
           }
         }
       }
-      
+
       setHasWon(true);
     }
 
@@ -261,7 +261,7 @@ const Game = () => {
 
   const handleNewGameClick = () => {
     // Logique pour générer un nouveau jeu
-    const newBoard = generateEmptyBoard(10, 10, 9);
+    const newBoard = generateEmptyBoard(9, 9, 10);
     setBoard(newBoard);
     setGameOver(false);
     setHasWon(false);
@@ -269,10 +269,8 @@ const Game = () => {
 
   return (
     <div className="game">
-      <button onClick={handleNewGameClick}>Nouveau jeu</button>
+      <div onClick={handleNewGameClick} className={`game-status ${hasWon ? 'game-won' : gameOver ? 'game-lost' : 'game-playing'}`}/>
       <Board board={board} handleCellClick={handleCellClick} />
-      {gameOver && <div className="game-over">Game Over!</div>}
-      {hasWon && <div className="game-won">You won!</div>}
     </div>
   );
 };

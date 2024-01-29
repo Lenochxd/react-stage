@@ -43,20 +43,26 @@ html, body {
 }
 
 .cell {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
 }
 
-.cell:hover {
-  background-color: #eee;
+.game-status {
+  width: 65px;
+  height: 65px;
+}
+.game-playing {
+  content: url('../assets/UI/face_unpressed.svg');
 }
 
-.game-over {
-  margin-top: 20px;
-  font-size: 24px;
-  color: red;
+.game-won {
+  content: url('../assets/UI/face_win.svg');
+}
+
+.game-lost {
+  content: url('../assets/UI/face_lose.svg');
 }
