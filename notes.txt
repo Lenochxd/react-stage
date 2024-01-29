@@ -55,3 +55,6 @@
         - l'écran de victoire, mais j'ai déjà réfléchi à comment je pourrais le faire
         - les parties à taille customisables avec les modes de jeu prédéfinis (faisable plutot facilement étant donné que la fonction `generateEmptyBoard` possède déjà un moyen de choisir la taille rien qu'avec un argument)
         - le design du site web, je compte m'inspirer (tout copier) de minesweeper.online
+29/01:
+    - J'ai ajouté l'écran de victoire, qui mets un drapeau sur toutes les mines oubliées
+    - J'ai commencé l'UI
