@@ -6,7 +6,7 @@ function Title() {
             <h1
                 className='brand-text'
             >
-                Minesweeper
+                Minesweeper Online
             </h1>
         </div>
     )
