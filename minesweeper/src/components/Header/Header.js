@@ -1,5 +1,5 @@
 import React from 'react'
-import Title from './Header/Title'
+import Title from './Title'
 
 function Header() {
     return (
