@@ -19,6 +19,7 @@ html, body {
   display: flex;
   justify-content: center;
   width: 100%;
+  background-color: #171717;
   box-shadow: rgb(42, 45, 47) 0px 0px 0px 1px;
   padding: 5px;
   padding-bottom: 5px;
@@ -153,7 +154,7 @@ html, body {
   content: url('../assets/UI/face_unpressed.svg');
 }
 
-.game-playing:active {
+.game-playing:active, .game-lost:active {
   content: url('../assets/UI/face_pressed.svg');
 }
 
