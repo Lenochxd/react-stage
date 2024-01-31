@@ -293,9 +293,9 @@ const Game = () => {
 
       {/* BOARD */}
       <div className="top-area-center board">
-        <div className="border-vert h-80" />
+        <div className="border-vert h-360" />
         <Board board={board} handleCellClick={handleCellClick} />
-        <div className="border-vert h-80" />
+        <div className="border-vert h-360" />
         {/* il faut 22.5rem pour cette grille! pas h-80, il faudrait que ça soit en pourcentages pour que ça soit automatique
         mais je n'ai pas encore réussi à le faire.. */}
       </div>
