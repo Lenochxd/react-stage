@@ -66,3 +66,5 @@
 31/02:
     - Header terminé
     - ajout d'un effet avec `:active` sur les cellules et sur le bouton rejouer
+    - j'ai réparé un bug où une mine pouvait ne pas amener à un game over
+    - j'ai commencé les affichages pour le compteur de mines et le timer
