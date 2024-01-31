@@ -1,6 +1,6 @@
 .typemine { content: url('../assets/cells/mine.svg'); }
 .typegameover { content: url('../assets/cells/mine_red.svg'); }
-.type0 { content: url('../assets/cells/type0.svg'); }
+.type0, .closed:active { content: url('../assets/cells/type0.svg'); }
 .type1 { content: url('../assets/cells/type1.svg'); }
 .type2 { content: url('../assets/cells/type2.svg'); }
 .type3 { content: url('../assets/cells/type3.svg'); }
