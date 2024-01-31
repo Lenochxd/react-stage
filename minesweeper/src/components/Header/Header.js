@@ -3,7 +3,10 @@ import Title from './Title'
 
 function Header() {
     return (
-        <Title/>
+        <div id="header">
+            <div className="brand-logo"/>
+            <Title/>
+        </div>
     )
 }
 
