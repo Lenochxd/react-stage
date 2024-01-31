@@ -107,8 +107,10 @@ const Game = () => {
     let newBoard = [...board];
     if (!newBoard[row][col].includes('flagged')) {
       newBoard[row][col] = newBoard[row][col].replace('closed', '');
+      if (newBoard[row][col].includes('mine')) {
+        newBoard = explode(newBoard, row, col);
+      }
     }
-
     if (newBoard[row][col].startsWith('0')) {
       for (let i = -1; i <= 1; i++) {
         for (let j = -1; j <= 1; j++) {
@@ -165,16 +167,16 @@ const Game = () => {
                 }
               }
             }
-          } else {
-            if (board[row][col].startsWith('0')) {
-              clearEmptyCells(board, row, col);
-            } else {
-              if (newBoard[row][col].includes('mine')) {
-                newBoard = explode(newBoard, row, col);
-              }
-              newBoard[row][col] = newBoard[row][col].replace('closed', '');
-              setBoard(newBoard);
+          }
+          else if (board[row][col].startsWith('0')) {
+            clearEmptyCells(board, row, col);
+          }
+          else {
+            if (newBoard[row][col].includes('mine')) {
+              newBoard = explode(newBoard, row, col);
             }
+            newBoard[row][col] = newBoard[row][col].replace('closed', '');
+            setBoard(newBoard);
           }
         }
       }
@@ -204,7 +206,6 @@ const Game = () => {
             }
           }
         }
-        console.log(everyCellsFlagged);
         if (everyCellsFlagged === true) {
           for (let i = -1; i <= 1; i++) {
             for (let j = -1; j <= 1; j++) {
