@@ -63,8 +63,10 @@
         - J'ai d'ailleurs commencé à utiliser tailwind pour faire cela.
 30/01:
     - J'ai travaillé sur le CSS
-31/02:
+31/01:
     - Header terminé
     - ajout d'un effet avec `:active` sur les cellules et sur le bouton rejouer
     - j'ai réparé un bug où une mine pouvait ne pas amener à un game over
     - j'ai commencé les affichages pour le compteur de mines et le timer
+01/02:
+    - J'ai beaucoup avancé sur les affichages pour le compteur de mines et le timer mais je suis resté longtemps bloqué sur un problème: si une valeur dans le compteur est négative elle ne s'affichera pas.
