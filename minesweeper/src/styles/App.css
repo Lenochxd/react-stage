@@ -139,11 +139,12 @@ html, body {
 }
 
 .numbers-panel {
-  content: url('../assets/UI/nums_background.svg');
+  background-image: url('../assets/UI/nums_background.svg');
+  background-repeat: round;
   width: 102.5px;
-  height: 52.5px;
+  height: 62.5px;
+  display: flex;
 }
-
 
 .game-status {
   width: 65px;
