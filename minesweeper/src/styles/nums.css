@@ -1,0 +1,41 @@
+.num {
+    background-repeat: round;
+    width: 27.5px;
+    height: 52.5px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.num-- {
+    background-image: url('../assets/UI/d-.svg');
+}
+.num-0 {
+    background-image: url('../assets/UI/d0.svg');
+}
+.num-1 {
+    background-image: url('../assets/UI/d1.svg');
+    margin-top: 5px;
+}
+.num-2 {
+    background-image: url('../assets/UI/d2.svg');
+}
+.num-3 {
+    background-image: url('../assets/UI/d3.svg');
+}
+.num-4 {
+    background-image: url('../assets/UI/d4.svg');
+}
+.num-5 {
+    background-image: url('../assets/UI/d5.svg');
+}
+.num-6 {
+    background-image: url('../assets/UI/d6.svg');
+}
+.num-7 {
+    background-image: url('../assets/UI/d7.svg');
+}
+.num-8 {
+    background-image: url('../assets/UI/d8.svg');
+}
+.num-9 {
+    background-image: url('../assets/UI/d9.svg');
+}
