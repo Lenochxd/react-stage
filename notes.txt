@@ -70,3 +70,4 @@
     - j'ai commencé les affichages pour le compteur de mines et le timer
 01/02:
     - J'ai beaucoup avancé sur les affichages pour le compteur de mines et le timer mais je suis resté longtemps bloqué sur un problème: si une valeur dans le compteur est négative elle ne s'affichera pas.
+    - 17h45 update:  En fait j'ai finalement réussi à implémenter cela, mais je quand on pose plusieurs flags en même temps, le compteur ne baisse que d'1, ce qui n'est pas normal! j'essaierais de fix ça demain.
