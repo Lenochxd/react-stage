@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Board from './Board';
+import '../styles/nums.css';
+
 
 const generateEmptyBoard = (rows, cols, numBombs) => {
   const emptyBoard = Array.from({ length: rows }, () =>
@@ -62,6 +64,8 @@ const Game = () => {
   const [board, setBoard] = useState([]);
   const [gameOver, setGameOver] = useState(false);
   const [hasWon, setHasWon] = useState(false);
+  const [minesLeft, setMinesLeft] = useState([]);
+  const [timer, setTimer] = useState([]);
 
   useEffect(() => {
     handleNewGameClick();
@@ -72,6 +76,52 @@ const Game = () => {
       return true;
     }
     return false;
+  };
+
+  const arrayToInt = (array) => {
+    console.log(array);
+    while (array[0] == 0) {
+      if (array.length == 1) {
+        break;
+      } else {
+        array.shift()
+      }
+    }
+    console.log(array);
+    console.log(parseInt(array.join('')));
+
+    return parseInt(array.join(''));
+  };
+
+  const intToArray = (int) => {
+    let str = int.toString();
+    
+    // Créer un tableau à partir de la chaîne de caractères
+    let array = str.split('').map(Number);
+  
+    // Insérer le signe négatif au début du tableau si le nombre est négatif
+    if (int < 0) {
+      while (array[0] == 0) {
+        array.shift();
+      }
+      array.unshift('-');
+    }
+
+    let newArray = array.filter(function(element) {
+      // Return true if the element is not NaN
+      if (element == '-') {
+        return true;
+      }
+      // TODO: CRASHES IF -99
+      return !isNaN(element);
+    });
+
+    // Ajouter un leading zero si la longueur est inférieure à 2
+    while (newArray.length != 3) {
+      newArray.unshift(0);
+    }
+
+    return newArray;
   };
 
   const explode = (board, row, col) => {
@@ -185,9 +235,13 @@ const Game = () => {
       if (newBoard[row][col]) {
         if (newBoard[row][col].includes('flagged')) {
           newBoard[row][col] = newBoard[row][col].replace('flagged', '')
+          let newMinesLeft = intToArray(arrayToInt(minesLeft) + 1);
+          setMinesLeft(newMinesLeft);
         }
         else if (board[row][col].includes('closed')) {
           newBoard[row][col] += ' flagged';
+          let newMinesLeft = intToArray(arrayToInt(minesLeft) - 1);
+          setMinesLeft(newMinesLeft);
         }
       }
 
@@ -211,6 +265,8 @@ const Game = () => {
             for (let j = -1; j <= 1; j++) {
               if (isDefined(newBoard, row + i, col + j)) {
                 newBoard[row + i][col + j] = newBoard[row + i][col + j].replace('flagged', '')
+                let newMinesLeft = intToArray(arrayToInt(minesLeft) + 1);
+                setMinesLeft(newMinesLeft);
               }
             }
           }
@@ -221,6 +277,8 @@ const Game = () => {
                 if (board[row + i][col + j].includes('closed')) {
                   if (!board[row + i][col + j].includes('flagged')) {
                     newBoard[row + i][col + j] += ' flagged';
+                    let newMinesLeft = intToArray(arrayToInt(minesLeft) - 1);
+                    setMinesLeft(newMinesLeft);
                   }
                 }
               }
@@ -250,6 +308,8 @@ const Game = () => {
         for (let j = 0; j < board[i].length; j++) {
           if (board[i][j].includes('mine')) {
             newBoard[i][j] += ' flagged';
+            let newMinesLeft = intToArray(arrayToInt(minesLeft) - 1);
+            setMinesLeft(newMinesLeft);
           }
         }
       }
@@ -266,6 +326,8 @@ const Game = () => {
     setBoard(newBoard);
     setGameOver(false);
     setHasWon(false);
+    setMinesLeft([0,1,0]);
+    setTimer([0,0,0]);
   };
 
   return (
@@ -279,9 +341,17 @@ const Game = () => {
 
       <div className="top-area-center mid">
         <div className="border-vert h-20" />
-        <div className="numbers-panel mines-left" />
+        <div className="numbers-panel mines-left">
+          <div className={`num num-${minesLeft[0]}`}></div>
+          <div className={`num num-${minesLeft[1]}`}></div>
+          <div className={`num num-${minesLeft[2]}`}></div>
+        </div>
         <div onClick={handleNewGameClick} className={`game-status ${hasWon ? 'game-won' : gameOver ? 'game-lost' : 'game-playing'}`} />
-        <div className="numbers-panel timer" />
+        <div className="numbers-panel timer">
+          <div className={`num num-${timer[0]}`}></div>
+          <div className={`num num-${timer[1]}`}></div>
+          <div className={`num num-${timer[2]}`}></div>
+        </div>
         <div className="border-vert h-20" />
       </div>
 
