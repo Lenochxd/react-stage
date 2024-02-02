@@ -11,3 +11,4 @@
 .type8 { content: url('../assets/cells/type8.svg'); }
 .closed {content: url('../assets/cells/closed.svg'); }
 .flagged {content: url('../assets/cells/flag.svg'); }
+.minewrong { content: url('../assets/cells/mine_wrong.svg'); }
