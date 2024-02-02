@@ -65,7 +65,9 @@ const Game = () => {
   const [gameOver, setGameOver] = useState(false);
   const [hasWon, setHasWon] = useState(false);
   const [minesLeft, setMinesLeft] = useState([]);
+  const [timerStarted, setTimerStarted] = useState(false);
   const [timer, setTimer] = useState([]);
+  const [intervalId, setIntervalId] = useState(null);
 
   useEffect(() => {
     handleNewGameClick();
@@ -79,7 +81,6 @@ const Game = () => {
   };
 
   const arrayToInt = (array) => {
-    console.log(array);
     while (array[0] == 0) {
       if (array.length == 1) {
         break;
@@ -87,8 +88,6 @@ const Game = () => {
         array.shift()
       }
     }
-    console.log(array);
-    console.log(parseInt(array.join('')));
 
     return parseInt(array.join(''));
   };
@@ -117,7 +116,7 @@ const Game = () => {
     });
 
     // Ajouter un leading zero si la longueur est inférieure à 2
-    while (newArray.length != 3) {
+    while (newArray.length < 3) {
       newArray.unshift(0);
     }
 
@@ -130,16 +129,28 @@ const Game = () => {
 
     // game over!
     console.log('game over!')
+    // for every cells in board
     for (let i = 0; i < board.length; i++) {
       for (let j = 0; j < board[i].length; j++) {
-        // for every cells in board
+        // show mines
         if (board[i][j].includes('mine')) {
           board[i][j] = board[i][j].replace('closed', '');
+        }
+
+        // show wrong flags
+        if (board[i][j].includes('flagged')) {
+          if (!board[i][j].includes('mine')) {
+            board[i][j] += ' minewrong';
+          }
         }
       }
     }
     setBoard(board);
     setGameOver(true);
+    // stop timer
+    clearInterval(intervalId);
+    setIntervalId(null);
+    setTimerStarted(false);
     return board;
   };
 
@@ -201,9 +212,21 @@ const Game = () => {
   };
 
   const handleCellClick = (e, row, col) => {
-    if (gameOver === true) {
+    if (gameOver === true || hasWon === true) {
       return
     }
+    if (timerStarted === false && gameOver === false && hasWon === false) {
+      setTimerStarted(true);
+      let newTimer = 0;
+      const intervalId = setInterval(() => {
+        if (newTimer < 999) {
+          setTimer(intToArray(newTimer + 1));
+          newTimer += 1;
+        }
+      }, 1000);
+      setIntervalId(intervalId);
+    }
+
     let newBoard = [...board];
     if (e.type === 'click') {
       if (board[row][col]) {
@@ -234,14 +257,10 @@ const Game = () => {
       e.preventDefault();
       if (newBoard[row][col]) {
         if (newBoard[row][col].includes('flagged')) {
-          newBoard[row][col] = newBoard[row][col].replace('flagged', '')
-          let newMinesLeft = intToArray(arrayToInt(minesLeft) + 1);
-          setMinesLeft(newMinesLeft);
+          newBoard[row][col] = newBoard[row][col].replaceAll('flagged', '')
         }
         else if (board[row][col].includes('closed')) {
           newBoard[row][col] += ' flagged';
-          let newMinesLeft = intToArray(arrayToInt(minesLeft) - 1);
-          setMinesLeft(newMinesLeft);
         }
       }
 
@@ -264,9 +283,7 @@ const Game = () => {
           for (let i = -1; i <= 1; i++) {
             for (let j = -1; j <= 1; j++) {
               if (isDefined(newBoard, row + i, col + j)) {
-                newBoard[row + i][col + j] = newBoard[row + i][col + j].replace('flagged', '')
-                let newMinesLeft = intToArray(arrayToInt(minesLeft) + 1);
-                setMinesLeft(newMinesLeft);
+                newBoard[row + i][col + j] = newBoard[row + i][col + j].replaceAll('flagged', '')
               }
             }
           }
@@ -277,8 +294,6 @@ const Game = () => {
                 if (board[row + i][col + j].includes('closed')) {
                   if (!board[row + i][col + j].includes('flagged')) {
                     newBoard[row + i][col + j] += ' flagged';
-                    let newMinesLeft = intToArray(arrayToInt(minesLeft) - 1);
-                    setMinesLeft(newMinesLeft);
                   }
                 }
               }
@@ -289,6 +304,20 @@ const Game = () => {
 
       }
     }
+
+
+    // Count flags
+    let flagsCount = 0;
+    for (let i = 0; i < board.length; i++) {
+      for (let j = 0; j < board[i].length; j++) {
+        if (board[i][j].includes('flagged')) {
+          flagsCount += 1;
+        }
+      }
+    }
+    // Refresh mines count
+    let newMinesLeft = intToArray(10 - flagsCount);
+    setMinesLeft(newMinesLeft);
 
 
     // Check if the player has won the game
@@ -308,27 +337,34 @@ const Game = () => {
         for (let j = 0; j < board[i].length; j++) {
           if (board[i][j].includes('mine')) {
             newBoard[i][j] += ' flagged';
-            let newMinesLeft = intToArray(arrayToInt(minesLeft) - 1);
-            setMinesLeft(newMinesLeft);
           }
         }
       }
 
       setHasWon(true);
+      // stop timer
+      clearInterval(intervalId);
+      setIntervalId(null);
+      setTimerStarted(false);
     }
 
     setBoard(newBoard);
   };
 
   const handleNewGameClick = () => {
-    // Logique pour générer un nouveau jeu
+    // Logic to generate a new game
     const newBoard = generateEmptyBoard(9, 9, 10);
     setBoard(newBoard);
     setGameOver(false);
     setHasWon(false);
     setMinesLeft([0,1,0]);
+    // clear timer
+    clearInterval(intervalId);
+    setIntervalId(null);
+    setTimerStarted(false);
     setTimer([0,0,0]);
   };
+
 
   return (
     <div className="game">
