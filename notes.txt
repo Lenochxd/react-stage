@@ -70,4 +70,16 @@
     - j'ai commencé les affichages pour le compteur de mines et le timer
 01/02:
     - J'ai beaucoup avancé sur les affichages pour le compteur de mines et le timer mais je suis resté longtemps bloqué sur un problème: si une valeur dans le compteur est négative elle ne s'affichera pas.
-    - 17h45 update:  En fait j'ai finalement réussi à implémenter cela, mais je quand on pose plusieurs flags en même temps, le compteur ne baisse que d'1, ce qui n'est pas normal! j'essaierais de fix ça demain.
+    - 17h45 update:
+        En fait j'ai finalement réussi à implémenter cela, mais je quand on pose plusieurs flags en même temps, le compteur ne baisse que d'1, ce qui n'est pas normal! j'essaierais de fix ça demain.
+02/02:
+    - Ajout du timer
+    - Ajout de la fonction minewrong, qui montre si on a mal placé un drapeau
+    - Correction du bug d'hier (l.74), en fait j'ai fait en sorte qu'à chaques flags posés, tout le jeu était analysé pour compter le nombre de drapeaux déjà posés et ainsi faire le comptes des mines restantes à découvrir.
+    - Correction d'un bug où on pouvait (à moitié ?) interragir avec le jeu après une victoire, ce qui pouvais d'ailleurs casser le timer..
+
+    Les affichages sont alors maintenant complètement fonctionnels !
+
+    Prochain objectif:
+        Donner des stats à la fin des parties et avoir un moyen de voir ses précédentes performances. (note perso: pour les stats il faudrait check le nombre de mines restantes à la fin d'une partie, et si elle est égale au nombre de mines de départ alors c'est une partie NF (no flags) donc ça donnerais + d'xp)
+        Pourquoi pas un système de PB, qui nous informe si l'on bat notre meilleur temps.
