@@ -8,7 +8,7 @@ const generateEmptyBoard = (rows, cols, numBombs) => {
     Array.from({ length: cols }, () => 0)
   );
 
-  // Placer des bombes de manière aléatoire
+  // Place mines randomly
   let bombsPlaced = 0;
   while (bombsPlaced < numBombs) {
     const randomRow = Math.floor(Math.random() * rows);
@@ -20,13 +20,13 @@ const generateEmptyBoard = (rows, cols, numBombs) => {
     }
   }
 
-  // Calculer le nombre de bombes adjacentes pour chaque case
+  // Calculate the number of adjacent bombs for each square
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
       if (emptyBoard[row][col] !== 'mine') {
         let count = 0;
 
-        // Vérifier les 8 cases autour
+        // Check the 8 boxes around
         for (let i = -1; i <= 1; i++) {
           for (let j = -1; j <= 1; j++) {
             const newRow = row + i;
@@ -49,7 +49,7 @@ const generateEmptyBoard = (rows, cols, numBombs) => {
     }
   }
 
-  // Ajouter "closed" à la fin de chaque valeur
+  // Add "closed" to the end of each value
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
       emptyBoard[row][col] += 'closed';
@@ -95,10 +95,10 @@ const Game = () => {
   const intToArray = (int) => {
     let str = int.toString();
     
-    // Créer un tableau à partir de la chaîne de caractères
+    // Create an array from the string
     let array = str.split('').map(Number);
   
-    // Insérer le signe négatif au début du tableau si le nombre est négatif
+    // Insert the negative sign at the beginning of the table if the number is negative
     if (int < 0) {
       while (array[0] == 0) {
         array.shift();
@@ -115,7 +115,7 @@ const Game = () => {
       return !isNaN(element);
     });
 
-    // Ajouter un leading zero si la longueur est inférieure à 2
+    // Add a leading zero if the length is less than 2  (2 --> 002)
     while (newArray.length < 3) {
       newArray.unshift(0);
     }
@@ -403,8 +403,6 @@ const Game = () => {
         <div className="border-vert h-360" />
         <Board board={board} handleCellClick={handleCellClick} />
         <div className="border-vert h-360" />
-        {/* il faut 22.5rem pour cette grille! pas h-80, il faudrait que ça soit en pourcentages pour que ça soit automatique
-        mais je n'ai pas encore réussi à le faire.. */}
       </div>
 
       <div className="top-area-center board-bottom">
